@@ -1,0 +1,8 @@
+{
+  "name": "Invitation",
+  "description": "Website undangan pernikahan online yang responsif dengan peta lokasi, galeri foto, musik latar, dan buku tamu digital.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
