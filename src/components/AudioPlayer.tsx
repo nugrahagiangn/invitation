@@ -6,10 +6,11 @@ interface AudioPlayerProps {
   isPlaying: boolean;
   onToggle: () => void;
   audioUrl?: string;
+  showControl?: boolean;
 }
 
 function resolveAudioUrl(url: string): string {
-  if (!url) return "brunomars.mp3";
+  if (!url) return "music.mp3";
   if (url.startsWith("/api/") || url.startsWith("api/")) {
     return getApiUrl(url);
   }
@@ -17,7 +18,7 @@ function resolveAudioUrl(url: string): string {
 }
 
 
-export default function AudioPlayer({ isPlaying, onToggle, audioUrl = "brunomars.mp3" }: AudioPlayerProps) {
+export default function AudioPlayer({ isPlaying, onToggle, audioUrl = "music.mp3", showControl = true }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [errorOccurred, setErrorOccurred] = useState(false);
 
@@ -27,6 +28,9 @@ export default function AudioPlayer({ isPlaying, onToggle, audioUrl = "brunomars
     audio.loop = true;
     audio.volume = 0.4; // standard background volume
     audioRef.current = audio;
+
+    // Explicitly ask browser to preload the audio stream
+    audio.preload = "auto";
 
     if (isPlaying) {
       const playPromise = audio.play();
@@ -60,6 +64,11 @@ export default function AudioPlayer({ isPlaying, onToggle, audioUrl = "brunomars
       audio.pause();
     }
   }, [isPlaying, onToggle]);
+
+  // If the control is requested to be hidden, we don't render the visual overlay but the audio still plays/preloads!
+  if (!showControl) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2">

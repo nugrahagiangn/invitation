@@ -8,8 +8,15 @@ export default defineConfig(() => {
     base: './',
     plugins: [react(), tailwindcss()],
     build: {
-      outDir: '.', // Output build diletakkan langsung sejajar dengan src (root folder)
-      emptyOutDir: false, // Jangan hapus folder root untuk mengamankan file src
+      outDir: 'dist', // Output build diletakkan di folder dist terpisah agar bersih
+      emptyOutDir: true, // Bersihkan folder dist secara otomatis sebelum diletakkan yang baru
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name].js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
+        },
+      },
     },
     resolve: {
       alias: {

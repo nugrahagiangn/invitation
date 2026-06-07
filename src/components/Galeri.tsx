@@ -1,12 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight, ZoomIn, Heart, Calendar, Sparkles, Camera } from "lucide-react";
 import { galleryImages, loveStories } from "../data";
-import { resolvePhotoUrl } from "../utils";
+import { resolvePhotoUrl, getApiUrl } from "../utils";
+
+interface Photo {
+  id: string;
+  url: string;
+  caption: string;
+}
 
 export default function Galeri() {
   const [activeTab, setActiveTab] = useState<"galeri" | "kisah">("galeri");
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
+  const [photosList, setPhotosList] = useState<Photo[]>(galleryImages);
+
+  const fetchPhotos = async () => {
+    try {
+      const res = await fetch(getApiUrl("/api/photos"));
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data) && data.length > 0) {
+          setPhotosList(data);
+        } else {
+          setPhotosList(galleryImages);
+        }
+      }
+    } catch (err) {
+      console.error("Gagal mendapatkan galeri foto dari backend:", err);
+      setPhotosList(galleryImages);
+    }
+  };
+
+  useEffect(() => {
+    fetchPhotos();
+    const interval = setInterval(fetchPhotos, 10000); // 10s auto sync
+    return () => clearInterval(interval);
+  }, []);
 
   const openLightbox = (index: number) => {
     setActivePhotoIndex(index);
@@ -20,7 +50,7 @@ export default function Galeri() {
     e.stopPropagation();
     if (activePhotoIndex !== null) {
       setActivePhotoIndex(
-        activePhotoIndex === 0 ? galleryImages.length - 1 : activePhotoIndex - 1
+        activePhotoIndex === 0 ? photosList.length - 1 : activePhotoIndex - 1
       );
     }
   };
@@ -29,7 +59,7 @@ export default function Galeri() {
     e.stopPropagation();
     if (activePhotoIndex !== null) {
       setActivePhotoIndex(
-        activePhotoIndex === galleryImages.length - 1 ? 0 : activePhotoIndex + 1
+        activePhotoIndex === photosList.length - 1 ? 0 : activePhotoIndex + 1
       );
     }
   };
@@ -84,7 +114,7 @@ export default function Galeri() {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full"
             >
-              {galleryImages.map((img, index) => (
+              {photosList.map((img, index) => (
                 <motion.div
                   key={img.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -243,8 +273,8 @@ export default function Galeri() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                src={resolvePhotoUrl(galleryImages[activePhotoIndex].url)}
-                alt={galleryImages[activePhotoIndex].caption}
+                src={resolvePhotoUrl(photosList[activePhotoIndex].url)}
+                alt={photosList[activePhotoIndex].caption}
                 referrerPolicy="no-referrer"
                 className="max-w-full max-h-full object-contain rounded-xl shadow-2xl border border-stone-900"
               />
@@ -264,10 +294,10 @@ export default function Galeri() {
               onClick={(e) => e.stopPropagation()}
             >
               <h4 className="text-amber-400 font-serif font-semibold text-base tracking-wide">
-                {galleryImages[activePhotoIndex].caption}
+                {photosList[activePhotoIndex].caption}
               </h4>
               <p className="text-stone-400 text-xs uppercase tracking-[0.2em] font-sans">
-                Foto {activePhotoIndex + 1} dari {galleryImages.length}
+                Foto {activePhotoIndex + 1} dari {photosList.length}
               </p>
             </div>
           </motion.div>

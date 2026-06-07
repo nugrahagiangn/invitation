@@ -78,7 +78,8 @@ export default function BukuTamu({ initialGuestName = "" }: BukuTamuProps) {
         setTimeout(() => setSuccessMsg(false), 5000);
       } else {
         const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || errData.details || "Faktur error database");
+        const detailedError = errData.details ? `${errData.error} (Detail: ${errData.details})` : (errData.error || errData.details || "Gagal menghubungi backend");
+        throw new Error(detailedError);
       }
     } catch (err: any) {
       console.error("Terjadi masalah saat mengirim ucapan ke backend:", err);

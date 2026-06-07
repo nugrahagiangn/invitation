@@ -452,6 +452,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-stone-900 font-sans selection:bg-amber-500/35 selection:text-stone-900">
       
+      {/* Preload and keep the audio connection ready from the beginning */}
+      <AudioPlayer 
+        isPlaying={isPlaying} 
+        onToggle={toggleMusic} 
+        audioUrl={musicUrl || undefined} 
+        showControl={isOpen} 
+      />
+      
       <AnimatePresence mode="wait">
         {!isOpen ? (
           <motion.div 
@@ -539,9 +547,6 @@ export default function App() {
                 <span className="text-[9px] font-sans font-bold uppercase tracking-wider">RSVP</span>
               </a>
             </nav>
-
-            {/* floating Music actions */}
-            <AudioPlayer isPlaying={isPlaying} onToggle={toggleMusic} audioUrl={musicUrl || undefined} />
 
             {/* SECTION 1: MAIN ENTRANCE LUXURY HEADER */}
             <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-stone-900 text-stone-100">

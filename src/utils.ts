@@ -69,8 +69,30 @@ function fallbackCopyToClipboard(text: string, onSuccess: () => void): void {
  * Fallbacks to relative fetch if VITE_API_URL is omitted or is a local path.
  */
 export function getApiUrl(pathStr: string): string {
-  const baseUrl = import.meta.env.VITE_API_URL || "";
   const cleanPath = pathStr.startsWith("/") ? pathStr : `/${pathStr}`;
+  
+  // Jika dibuka di lingkungan lokal/development, beralih ke path relatif local
+  // agar proxy Vite/server mengarahkannya dengan benar ke port backend yang tepat
+  if (typeof window !== "undefined") {
+    const hostname = window.location.hostname;
+    if (
+      hostname === "localhost" || 
+      hostname === "127.0.0.1" || 
+      hostname.includes("run.app") || 
+      hostname.includes("gitpod") || 
+      hostname.includes("github.dev")
+    ) {
+      return cleanPath;
+    }
+  }
+
+  // Jika dipanggil di lingkungan development Vite
+  if (import.meta.env.DEV) {
+    return cleanPath;
+  }
+  
+  // Jika dalam mode production (di-build), arahkan ke URL server live di .env (VITE_API_URL)
+  const baseUrl = import.meta.env.VITE_API_URL || "";
   if (baseUrl) {
     // If the path already has the base URL prefix, don't prepend it again
     if (cleanPath.startsWith(baseUrl)) {

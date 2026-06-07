@@ -1,0 +1,71 @@
+{
+  "guestbook": [],
+  "settings": {
+    "active_song_url": "/music.mp3",
+    "active_song_title": "Bruno Mars - Risk It All (Aplikasi Lokal)"
+  },
+  "admin_users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "name": "Administrator"
+    },
+    {
+      "id": 2,
+      "username": "gian",
+      "password": "9677a90fd87b810a6ec15462f1b0a823ae50fa42e7ae4d29de2182aaef2d091a",
+      "name": "Gian Nugraha"
+    },
+    {
+      "id": 3,
+      "username": "cucu",
+      "password": "f4e63772088be1e28def355a3822150b69fbd254207907c88a60e8ffb9cb4cad",
+      "name": "Cucu"
+    }
+  ],
+  "photos": [
+    {
+      "id": "g1",
+      "url": "/images/male.jpeg",
+      "caption": "Momen Kebersamaan",
+      "isActive": true,
+      "createdAt": "2026-06-07T02:31:39.949Z"
+    },
+    {
+      "id": "g2",
+      "url": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800",
+      "caption": "Buket Bunga Impian",
+      "isActive": true,
+      "createdAt": "2026-06-07T02:31:39.950Z"
+    },
+    {
+      "id": "g3",
+      "url": "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800",
+      "caption": "Simbol Ikatan Suci",
+      "isActive": true,
+      "createdAt": "2026-06-07T02:31:39.950Z"
+    },
+    {
+      "id": "g4",
+      "url": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=800",
+      "caption": "Langkah Bersama",
+      "isActive": true,
+      "createdAt": "2026-06-07T02:31:39.950Z"
+    },
+    {
+      "id": "g5",
+      "url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=800",
+      "caption": "Pesta Keakraban",
+      "isActive": true,
+      "createdAt": "2026-06-07T02:31:39.950Z"
+    },
+    {
+      "id": "g6",
+      "url": "https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&q=80&w=800",
+      "caption": "Kue Pernikahan Cantik",
+      "isActive": true,
+      "createdAt": "2026-06-07T02:31:39.950Z"
+    }
+  ]
+}
