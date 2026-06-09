@@ -145,7 +145,6 @@ export const turutMengundang: GuestInviterGroup[] = [
       "Keluarga Bpk. Jajang",
       "Keluarga Bpk. Yahya",
       "Bpk. Ustadz Diding",
-      "Sdr. Asep, Neng & Cecep (Kakak / Adik / Sepupu)",
     ]
   },
   {
