@@ -516,13 +516,6 @@ Sampai ketemu di pesta nanti!
                 <span>{isLoggingIn ? "Memverifikasi..." : "Autentikasi Akun"}</span>
               </button>
             </form>
-            
-            <div className="pt-4 text-[10px] text-stone-500 italic leading-relaxed">
-              Petunjuk Database: <br/>
-              • Username: <b>admin</b> | Sandi: <b>admin</b> <br/>
-              • Username: <b>gian</b> | PIN: <b>051196</b> <br/>
-              • Username: <b>cucu</b> | PIN: <b>110599</b>
-            </div>
           </div>
         ) : (
           
