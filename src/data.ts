@@ -45,9 +45,9 @@ export const agendaAkad: AgendaEvent = {
   dateStr: "Sabtu, 12 September 2026",
   timeStr: "08:00 - 10:00 WIB",
   locationName: "Masjid Agung Sunda Kelapa",
-  address: "Jl. Taman Sunda Kelapa No. 16, Menteng, Kec. Menteng, Kota Jakarta Pusat, 10310",
-  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3966.4526019599554!2d106.83155797587844!3d-6.203871993783935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f41764eb8cf3%3A0xc3f8e5b66d5b03bc!2sMasjid%20Agung%20Sunda%20Kelapa!5e0!3m2!1sid!2sid!4v1716380000000!5m2!1sid!2sid",
-  mapNavigationUrl: "https://maps.apple.com/?address=Masjid%20Agung%20Sunda%20Kelapa&ll=-6.203872,106.831558&q=Arah%20Lokasi",
+  address: "Kp. Manguneng, Ds. Cihikeu, Kec. Bungbulang, Kab. Garut, Jawa Barat, 10310",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.518608882937!2d107.6961136!3d-7.4646549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e680df8374d898d%3A0x6e9f16e788bc11e6!2sBungbulang%2C%20Kabupaten%20Garut%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1716380000000!5m2!1sid!2sid",
+  mapNavigationUrl: "https://maps.google.com/?q=Bungbulang+Garut",
 };
 
 export const agendaResepsi: AgendaEvent = {
@@ -129,27 +129,31 @@ export const turutMengundang: GuestInviterGroup[] = [
   {
     category: "Keluarga Besar Mempelai Pria",
     names: [
-      "Bpk. H. Rahmat & Ibu Hj. Aminah (Kakek / Nenek)",
-      "Bpk. Agus Sudrajat & Ibu Lilis (Uwak)",
-      "Bpk. Tisna & Ibu Rina (Paman / Bibi)",
-      "Sdr. Dedi, Dina & Dani (Kakak / Adik / Sepupu)",
+      "Keluarga Bpk. Irvan Syahrani",
+      "Keluarga Bpk. Gilang Gumilar",
+      "Keluarga Bpk. Haidar",
+      "keluarga Bpk. Ustadz Wawan",
+      "keluarga Ibu. Atih",
+      "keluarga Bpk. Enjang Supriatna",
+      "keluarga Bpk. Ujang Sule",
+      "keluarga Bpk. Ade BK",
     ]
   },
   {
     category: "Keluarga Besar Mempelai Wanita",
     names: [
-      "Bpk. Abah Oyo & Ibu Mak Kokom (Kakek / Nenek)",
-      "Bpk. H. Jajang & Ibu Hj. Imas (Paman / Bibi)",
-      "Bpk. H. Mamat & Ibu Ceu Yuyun (Uwak)",
+      "Keluarga Bpk. Jajang",
+      "Keluarga Bpk. Yahya",
+      "Bpk. Ustadz Diding",
       "Sdr. Asep, Neng & Cecep (Kakak / Adik / Sepupu)",
     ]
   },
   {
     category: "Sahabat & Rekan Kerja",
     names: [
-      "Teman-teman Alumni SMAN 1 Garut",
-      "Keluarga Besar Komunitas IT & Programmer Garut",
-      "Rekan Kerja dan Sahabat Dekat Kedua Mempelai"
+      "Teman-teman Alumni #15 (Python) Universitas Nasional PASIM Bandung",
+      "Rekan Kerja Management Information System (MIS) PT. Dialogue Group",
+      "Rekan Tongkrongan (OJOL) Warkop Om Brewok"
     ]
   }
 ];
